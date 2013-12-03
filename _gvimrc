@@ -1,0 +1,13 @@
+colorscheme koehler
+
+" ウインドウに関する設定:
+"
+" ウインドウの幅
+set columns=120
+" ウインドウの高さ
+set lines=40
+" コマンドラインの高さ(GUI使用時)
+set cmdheight=2
+
+
+
