@@ -14,6 +14,8 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'troydm/easybuffer.vim'
+NeoBundle 'haya14busa/vim-easymotion'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -33,13 +35,43 @@ nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
 nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
 nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
+
+nnoremap <silent> ,eb :<C-u>EasyBuffer<CR>
+
+ 
+" vim-eazymotion {{{
+" デフォルトだと<Leader><Leader>となってるprefixキーを変更
+let g:EasyMotion_leader_key = ';'
+ 
+" 候補選択: 候補が最初から2キー表示されるので大文字や打ちにくい文字は全面的に消す
+" なお、最後の数文字が2キーの時の最初のキーになるので打ちやすいものを選ぶとよさそうです。
+let g:EasyMotion_keys='hklyuiopnm,qwertzxcvbasdgjf;'
+ 
+" 拡張版機能"{{{
+ 
+" もっともよく使うであろう'<Leadr><Leader>s'motion をsに割り当て
+nmap s <Plug>(easymotion-s)
+vmap s <Plug>(easymotion-s)
+omap z <Plug>(easymotion-s) " surround.vimとかぶるのでz
+ 
+" keep cursor column
+let g:EasyMotion_startofline = 0
+ 
+" smartcase
+let g:EasyMotion_smartcase = 1
+ 
+" Migemo
+let g:EasyMotion_use_migemo = 1
+"}}}
+ 
+"}}}
 "---------------------------------------------------------------------------
 " 編集に関する設定:
 "
 " タブの画面上での幅
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 
 " タブをスペースに展開しない (expandtab:展開する)
 set expandtab
@@ -61,28 +93,6 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
 set nobackup
 set noswapfile
-
-"---------------------------------------------------------------------------
-" GUI固有ではない画面表示の設定:
-"
-" 行番号を非表示 (number:表示)
-set number
-" ルーラーを表示 (noruler:非表示)
-set ruler
-" タブや改行を表示 (list:表示)
-set list
-" どの文字でタブや改行を表示するかを設定
-set listchars=tab:>-,extends:<,trail:-,eol:<
-" 長い行を折り返して表示 (nowrap:折り返さない)
-set wrap
-" 常にステータス行を表示 (詳細は:he laststatus)
-set laststatus=2
-" コマンドラインの高さ (Windows用gvim使用時はgvimrcを編集すること)
-set cmdheight=2
-" コマンドをステータス行に表示
-set showcmd
-" タイトルを表示
-set title
 
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
@@ -143,6 +153,8 @@ set tags+=tags;
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
 let g:neocomplete#enable_smart_case = 1
+" _(アンダーバー)区切りの補完を有効化
+let g:neocomplete#enable_underbar_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
