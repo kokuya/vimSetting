@@ -13,9 +13,12 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " 読み込むプラグインを記載
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/neocomplete.vim'
+NeoBundle 'Shougo/neosnippet'
+NeoBundle "Shougo/neosnippet-snippets"
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'haya14busa/vim-easymotion'
+NeoBundle 'honza/vim-snippets'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -173,3 +176,24 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><C-g>  neocomplete#undo_completion()
 inoremap <expr><C-l>  neocomplete#complete_common_string()
 
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)"
+\: "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+
+" for snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
