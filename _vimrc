@@ -19,6 +19,7 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'haya14busa/vim-easymotion'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'osyo-manga/vim-over'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -41,6 +42,9 @@ nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
 
 nnoremap <silent> ,eb :<C-u>EasyBuffer<CR>
 
+" vim-over
+" over.vimの起動
+nnoremap <silent> ,m :OverCommandLine<CR>
  
 " vim-eazymotion {{{
 " デフォルトだと<Leader><Leader>となってるprefixキーを変更
@@ -158,8 +162,12 @@ let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 " _(アンダーバー)区切りの補完を有効化
 let g:neocomplete#enable_underbar_completion = 1
+
+let g:neocomplete#enable_fuzzy_completion = 1
 " Set minimum syntax keyword length.
 let g:neocomplete#sources#syntax#min_keyword_length = 3
+let g:neocomplete#sources#buffer#cache_limit_size = 1000000
+let g:neocomplete#sources#tags#cache_limit_size = 1000000
 let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
