@@ -20,6 +20,7 @@ NeoBundle 'troydm/easybuffer.vim'
 NeoBundle 'haya14busa/vim-easymotion'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -205,3 +206,8 @@ endif
 
 " for snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+
+" vim-indent-guides
+let g:indent_guides_enable_on_vim_startup=1
+
+colorscheme koehler
