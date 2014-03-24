@@ -21,6 +21,8 @@ NeoBundle 'haya14busa/vim-easymotion'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'tomasr/molokai'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -203,11 +205,9 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-
 " for snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
 
-colorscheme koehler

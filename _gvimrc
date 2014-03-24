@@ -1,4 +1,4 @@
-colorscheme koehler
+colorscheme hybrid
 
 if has('multi_byte_ime') || has('xim')
   " IME ON時のカーソルの色を設定(設定例:紫)
