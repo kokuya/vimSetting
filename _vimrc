@@ -23,6 +23,9 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'w0ng/vim-hybrid'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'vim-scripts/summerfruit256.vim'
+NeoBundle 'altercation/vim-colors-solarized.git'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
