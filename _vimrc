@@ -4,6 +4,8 @@ if has('vim_starting')
   set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
+filetype off
+
 " neobundle.vimの初期化 
 call neobundle#rc(expand('~/.vim/bundle'))
 
@@ -26,6 +28,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'vim-scripts/summerfruit256.vim'
 NeoBundle 'altercation/vim-colors-solarized.git'
+NeoBundle 'Align'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -213,4 +216,5 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_guide_size = 1
 
