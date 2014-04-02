@@ -1,4 +1,4 @@
-set background=light
+"set background=light
 colorscheme solarized
 
 if has('multi_byte_ime') || has('xim')
@@ -25,10 +25,10 @@ set lines=40
 " コマンドラインの高さ(GUI使用時)
 set cmdheight=2
 
-set encoding=utf-8
-set guifont=Inconsolata:h12
+"set encoding=utf-8
+set guifont=Inconsolata:h12:cSHIFTJIS
 "set guifontwide=Migu\ 1M:h12
-set guifontwide=MeiryoKe_Console:h12
+"set guifontwide=MeiryoKe_Console:h12
 
 source $VIMRUNTIME/delmenu.vim
 set langmenu=ja_jp.utf-8

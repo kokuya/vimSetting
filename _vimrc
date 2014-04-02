@@ -88,6 +88,8 @@ let g:EasyMotion_use_migemo = 1
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
+set tw=0
+set formatoptions=q
 
 " タブをスペースに展開しない (expandtab:展開する)
 set expandtab
@@ -217,4 +219,14 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 " vim-indent-guides
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_guide_size = 1
+
+function! TestFunc() range
+  let lnum = a:lastline - a:firstline + 1
+  echo 'select line num =' . lnum
+  execute ":silent! " . a:firstline . "," . a:lastline .  ":s/,//"
+  execute ":silent! " . a:firstline . "," . a:lastline .  ":s/$/--/"
+  execute ":silent! " . a:firstline . "," . a:lastline .  ":Align --"
+endfunction
+
+
 
