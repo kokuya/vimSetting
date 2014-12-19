@@ -14,6 +14,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 読み込むプラグインを記載
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle "Shougo/neosnippet-snippets"
@@ -29,6 +30,7 @@ NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'vim-scripts/summerfruit256.vim'
 NeoBundle 'altercation/vim-colors-solarized.git'
 NeoBundle 'Align'
+"NeoBundle 'vim-scripts/dbext.vim'
 
 " 読み込んだプラグインも含め、ファイルタイプの検出、ファイルタイプ別プラグイン/インデントを有効化する
 syntax on
@@ -42,45 +44,23 @@ NeoBundleCheck
 let g:unite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-nnoremap <silent> ,uy :<C-u>Unite history/yank<CR>
-nnoremap <silent> ,ub :<C-u>Unite buffer<CR>
-nnoremap <silent> ,uf :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-nnoremap <silent> ,ur :<C-u>Unite -buffer-name=register register<CR>
-nnoremap <silent> ,uu :<C-u>Unite file_mru buffer<CR>
-
+nnoremap [unite] <Nop>
+nmap <Space>u [unite]
+nnoremap <silent> [unite]y :<C-u>Unite history/yank<CR>
+nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
+nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
+nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
+nnoremap <silent> [unite]u :<C-u>Unite file_mru buffer<CR>
 
 nnoremap <silent> ,eb :<C-u>EasyBuffer<CR>
 
-" vim-over
-" over.vimの起動
-nnoremap <silent> ,m :OverCommandLine<CR>
- 
-" vim-eazymotion {{{
-" デフォルトだと<Leader><Leader>となってるprefixキーを変更
-let g:EasyMotion_leader_key = ';'
- 
-" 候補選択: 候補が最初から2キー表示されるので大文字や打ちにくい文字は全面的に消す
-" なお、最後の数文字が2キーの時の最初のキーになるので打ちやすいものを選ぶとよさそうです。
-let g:EasyMotion_keys='hklyuiopnm,qwertzxcvbasdgjf;'
- 
-" 拡張版機能"{{{
- 
-" もっともよく使うであろう'<Leadr><Leader>s'motion をsに割り当て
-nmap s <Plug>(easymotion-s)
-vmap s <Plug>(easymotion-s)
-omap z <Plug>(easymotion-s) " surround.vimとかぶるのでz
- 
-" keep cursor column
-let g:EasyMotion_startofline = 0
- 
-" smartcase
-let g:EasyMotion_smartcase = 1
- 
-" Migemo
-let g:EasyMotion_use_migemo = 1
-"}}}
- 
-"}}}
+nnoremap s <Nop>
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
+nnoremap ss :<C-u>sp<CR>
+nnoremap sv :<C-u>vs<CR>
 "---------------------------------------------------------------------------
 " 編集に関する設定:
 "
@@ -111,6 +91,7 @@ let format_allow_over_tw = 1	" ぶら下り可能幅
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
 set nobackup
 set noswapfile
+set noundofile
 
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
@@ -227,6 +208,15 @@ function! TestFunc() range
   execute ":silent! " . a:firstline . "," . a:lastline .  ":s/$/--/"
   execute ":silent! " . a:firstline . "," . a:lastline .  ":Align --"
 endfunction
+
+"let dbext_default_profile=""
+"let dbext_default_type="ORA"
+"let dbext_default_user="O_CST"
+"let dbext_default_passwd="O_CST"
+"let dbext_default_dbname="XE"
+"let dbext_default_host="192.168.3.123"
+"let dbext_default_buffer_lines=20
+
 
 
 
